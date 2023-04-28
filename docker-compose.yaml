@@ -1,0 +1,9 @@
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: moviestestuser
+      POSTGRES_PASSWORD: SmSteam123
+      PGDATA: /data/postgres
+
