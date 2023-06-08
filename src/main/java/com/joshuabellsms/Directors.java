@@ -8,6 +8,17 @@ import java.util.Objects;
 @Entity
 @Table(name = "directors")
 public class Directors{
+
+    @Id
+    @SequenceGenerator(
+            name = "directors_id_sequence",
+            sequenceName = "directors_id_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "directors_id_sequence"
+    )
     private Integer movie_id;
     private Integer persons_id;
 
@@ -29,8 +40,8 @@ public class Directors{
         this.movie_id=movie_id;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id", nullable = false)
     public Integer  getPersons_id(){
         return persons_id;

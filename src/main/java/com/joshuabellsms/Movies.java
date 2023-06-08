@@ -1,25 +1,43 @@
 package com.joshuabellsms;
 
 import jakarta.persistence.*;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import org.springframework.stereotype.Controller;
 import java.util.Objects;
 @Entity
-@Table(name = "movies")
 public class Movies {
+
+//    @Id
+
+    @Id
+    @SequenceGenerator(
+            name = "movies_id_sequence",
+            sequenceName = "movies_id_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "movies_id_sequence"
+    )
+    @Column(name = "id", nullable = false)
     private Integer id;
+    @Column(name = "title", nullable = false)
     private String title;
+    @Column(name = "year")
     private  Integer year;
 
     public Movies(Integer id, String title, Integer year){
-        this.id=id;
-        this.title=title;
-        this.year=year;
+        this.id= id;
+        this.title= title;
+        this.year= year;
     }
-//    public Movies(){
-//    }
+    public Movies(){
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    }
+
     public Integer getId(){
         return id;
     }
@@ -27,7 +45,7 @@ public class Movies {
         this.id=id;
     }
 
-    @Column(name = "year")
+
     public Integer getYear(){
         return year;
     }
@@ -35,7 +53,7 @@ public class Movies {
         this.year=year;
     }
 
-    @Column(name = "title", nullable = false)
+
     public String getTitle(){
         return title;
     }

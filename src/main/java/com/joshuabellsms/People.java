@@ -1,33 +1,33 @@
 package com.joshuabellsms;
-
-import java.util.Objects;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
-@Table(name = "users")
-public class Users {
+@Table(name = "people")
+public class People {
 
     @Id
     @SequenceGenerator(
-            name = "users_id_sequence",
-            sequenceName = "users_id_sequence",
+            name = "people_id_sequence",
+            sequenceName = "people_id_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "users_id_sequence"
+            generator = "people_id_sequence"
     )
     private Integer id;
     private String name;
     private Integer birth;
 
-    public Users(Integer id, String name, Integer birth){
+    public People (Integer id, String name, Integer birth){
         this.id=id;
         this.name=name;
         this.birth=birth;
     }
 
-    public Users(){
+    public People(){
     }
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +47,7 @@ public class Users {
         this.name=name;
     }
 
-    @Column(name = "birth", nullable = false)
+    @Column(name = "birth")
     public Integer getBirth(){
         return birth;
     }
@@ -57,14 +57,12 @@ public class Users {
 
 
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Users users = (Users) o;
-        return Objects.equals(id, users.id) && Objects.equals(name, users.name) && Objects.equals(birth, users.birth);
+        People people = (People) o;
+        return Objects.equals(id, people.id) && Objects.equals(name, people.name) && Objects.equals(birth, people.birth);
     }
 
     @Override
@@ -76,9 +74,9 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", birth=" + birth +
+                "id=" + this.id +
+                ", name='" + this.name + '\'' +
+                ", birth=" + this.birth +
                 '}';
     }
 }

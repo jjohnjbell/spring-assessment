@@ -7,6 +7,17 @@ import java.util.Objects;
 @Entity
 @Table(name = "ratings")
 public class Ratings {
+
+    @Id
+    @SequenceGenerator(
+            name = "ratings_id_sequence",
+            sequenceName = "ratings_id_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "ratings_id_sequence"
+    )
     private Integer movieid;
     private Double rating;
     private  Integer votes;
@@ -20,8 +31,8 @@ public class Ratings {
     public Ratings(){
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getMovieId(){
         return movieid;
     }

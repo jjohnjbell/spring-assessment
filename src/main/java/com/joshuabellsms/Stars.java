@@ -7,6 +7,17 @@ import java.util.Objects;
 @Entity
 @Table(name = "stars")
 public class Stars {
+
+    @Id
+    @SequenceGenerator(
+            name = "stars_id_sequence",
+            sequenceName = "stars_id_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "stars_id_sequence"
+    )
     private Integer movie_id;
     private Integer person_id;
 
@@ -18,7 +29,7 @@ public class Stars {
     public Stars(){
     }
 
-    @Id
+   
     @Column(name = "movie_id", nullable = false)
     public Integer getMovie_id() {
         return movie_id;
